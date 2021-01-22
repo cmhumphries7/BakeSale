@@ -8,7 +8,12 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+<%# code added her will show up on every webpage, nav? %>
   <body>
-    <%= yield %>
+    <%= render 'home/navbar' %>
+
+    <div class ="container">
+      <%= yield %>
+    </div>
   </body>
 </html>
