@@ -1,23 +1,23 @@
 class Order
-    attr_accessor :recipe, :price, :pieces, :current_orders
+    attr_accessor :customer_name, :recipe, :quantity, :price
 
-    def initialize recipe, price, pieces
-        @recipe = recipe
-        @price = price
-        @pieces = pieces
-        @current_orders = 0
+    def initialize customer_name, recipe, quantity
+        @customer_name = customer_name
+		@recipe = recipe
+        @quantity = quantity
+        @price = 0
     end
 
-    def add_price amount
-        @price = amount
+    def add_price price
+       @price = price
     end
 
-    def add_pieces pieces
-        @pieces = pieces
+    def add_quantity quantity
+       @quantity = quantity
     end
 
     def to_s
         report = ""
-        report + @recipe + ", $" + @price.to_s + ", " + @pieces.to_s + " total"
+        report + @customer_name + ", " + @recipe + ", " + @quantity.to_s + "\n"
     end
 end

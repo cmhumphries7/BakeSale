@@ -2,34 +2,34 @@ require_relative 'order'
 
 RSpec.describe Order do
     before do 
-        recipe = "Cookies"
-        price = 5
-        pieces = 12
-        @order = Order.new recipe, price, pieces
+        customer_name = "Luke"
+        recipe = "Butter Pecan Cookies"
+        quantity = 12
+        @order = Order.new customer_name, recipe, quantity
+    end
+    
+    it 'should respond to customer_name' do
+       expect(@order).to respond_to(:customer_name)
     end
     
     it 'should respond to recipe' do
-       expect(@order).to respond_to(:recipe)
-    end
-    
-    it 'should respond to price' do
-        expect(@order).to respond_to(:price)
+        expect(@order).to respond_to(:recipe)
     end
 
-    it 'should respond to pieces' do
-        expect(@order).to respond_to(:pieces)
+    it 'should respond to quantity' do
+        expect(@order).to respond_to(:quantity)
     end
 
-    it 'should respond to current_orders' do
-        expect(@order).to respond_to(:current_orders)
+    it 'should return correct customer name' do
+        expect(@order.customer_name).to eq("Luke")
     end
 
-    it 'should return a price of 5' do
-        expect(@order.price).to eq(5)
+	it 'should return correct recipe name' do
+        expect(@order.recipe).to eq("Butter Pecan Cookies")
     end
 
-    it 'should return 12 pieces' do
-        expect(@order.pieces).to eq(12)
+    it 'should return correct quantity' do
+        expect(@order.quantity).to eq(12)
     end
 
     describe '#add_price' do
@@ -37,52 +37,29 @@ RSpec.describe Order do
             expect(@order).to respond_to(:add_price)
         end
 
-        it 'should return the correct result for add_price' do
+        it 'should update with new price' do
             new_price = 10
             @order.add_price(new_price)
             expect(@order.price).to eq(10)
         end
     end
 
-    describe '#add_pieces' do
-        it 'should respond to add_pieces' do
-            expect(@order).to respond_to(:add_pieces)
+    describe '#add_quantity' do
+        it 'should respond to add_quantity' do
+            expect(@order).to respond_to(:add_quantity)
         end
 
-        it 'should return the correct results for add_pieces' do
-            new_pieces = 12
-            @order.add_pieces(new_pieces)
-            expect(@order.pieces).to eq(12)
+        it 'should update with new quantity' do
+            new_quantity = 24
+            @order.add_quantity(new_quantity)
+            expect(@order.quantity).to eq(24)
         end
     end
-    
-    # describe '#current_orders' do
-    #     it 'should respond to #current_orders' do
-    #         expect(@order).to respond_to(:current_orders)
-    #     end
 
-    #     it 'should return the # of orders placed' do
-    #         expect(@order.current_orders).to eq(0)
-    #     end
-    # end
-
-    
-
-    describe 'order output' do
+    describe '#order output' do
         it 'returns the correct output for a recipe listing' do
             #@order.add
-            expect("#{@order}").to eq("Cookies, $5, 12 total")
+            expect("#{@order}").to eq("Luke, Butter Pecan Cookies, 12\n")
         end
-    end
-
-
-
-
-
-    #cupcakes as example
-    #needs a name, needs a price per unit, total # of units
-    #how many orders have been placed for it?
-    
-    
-    
+    end    
 end

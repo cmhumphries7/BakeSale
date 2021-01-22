@@ -1,9 +1,9 @@
 require_relative 'order'
 
 
-recipe_name = "Donuts"
-price = 2
-pieces = 24
-order1 = Order.new recipe_name, price, pieces
+customer_name = "Chris"
+recipe_name = "Sugar Cookies"
+quantity = 24
+order1 = Order.new customer_name, recipe_name, quantity
 
 puts order1
